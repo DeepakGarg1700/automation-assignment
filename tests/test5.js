@@ -1,4 +1,5 @@
-// assignment 1
+// assignment 5
+// Post should be published on profile with image /audio/video
 
 module.exports = {
   'login to rtmedia demo' : function (client) {
@@ -9,18 +10,16 @@ module.exports = {
 
       .assert.title('rtMedia Demo Site')
 
-      .setValue('input[id="bp-login-widget-user-login"]', 'demo')
-      .setValue('input[id="bp-login-widget-user-pass"]', 'demo')
+      .setValue('input[id="bp-login-widget-user-login"]', 'demo') // valid id
+      .setValue('input[id="bp-login-widget-user-pass"]', 'demo') // valid password
       .pause(100)
-      .click('#bp-login-widget-submit')
+      .click('#bp-login-widget-submit') // login button
       .pause(5000)
+      .setValue('textarea[id="whats-new"]',"this is a demo post") // text post
+      .setValue('input[type="file"]', require('path').resolve('img.jpg')) // media post(image)
       .pause(5000)
-      .setValue('textarea[id="whats-new"]',"this is a demo post to check privacy")
-      .pause(3000)
-      .click("#rtSelectPrivacy option[value='20']")  //logged in user
-      .pause(3000)
-      .click('#whats-new-submit')
-      .pause(3000)
-      .end()
+      .click('#aw-whats-new-submit') // post submit
+      .pause(20000)
+      .end();
   }
 };
