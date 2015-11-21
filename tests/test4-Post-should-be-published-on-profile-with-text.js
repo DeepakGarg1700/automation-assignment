@@ -4,19 +4,13 @@ module.exports = {
   'login to rtmedia demo' : function (client) {
     client
       .maximizeWindow()
-      .url('http://demo.rtcamp.com/rtmedia')
-      .waitForElementVisible('body', 1000)
-      .assert.title('rtMedia Demo Site')
-      .setValue('input[id="bp-login-widget-user-login"]', 'demo') // id demo
-      .setValue('input[id="bp-login-widget-user-pass"]', 'demo') // password demo
-      .pause(100)
-      .click('#bp-login-widget-submit') // login button
-      .pause(5000)
+      .login('http://demo.rtcamp.com/rtmedia','demo','demo')
       .assert.visible('.logout') // logout must be visivle after logged in
       .setValue('#whats-new','this a demo post') // text demo post
       .pause(1000)
       .click('#aw-whats-new-submit') // post update
       .pause(5000)
+      .assert.visible('#activity-stream') // after text post updated it should be visible
       .end();
   }
 };

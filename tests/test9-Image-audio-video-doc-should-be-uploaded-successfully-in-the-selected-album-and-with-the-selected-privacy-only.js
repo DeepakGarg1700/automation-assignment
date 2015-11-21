@@ -5,14 +5,8 @@ module.exports = {
   'login to rtmedia demo' : function (client) {
     client
       .maximizeWindow()
-      .url('http://demo.rtcamp.com/rtmedia')
-      .waitForElementVisible('body', 1000)
-      .assert.title('rtMedia Demo Site')
-      .setValue('input[id="bp-login-widget-user-login"]', 'demo') // valid id
-      .setValue('input[id="bp-login-widget-user-pass"]', 'demo') // valid password
-      .pause(100)
-      .click('#bp-login-widget-submit') // click on loggin
-      .pause(5000)
+      .login('http://demo.rtcamp.com/rtmedia','demo','demo')
+      .assert.visible('.logout') // logout must be visivle after logged in
       .url('http://demo.rtcamp.com/rtmedia/members/demo/media/') // url for media upload
       .pause(1000)
       .click('#rtm-media-options span#rtm_show_upload_ui') // click on upload button
